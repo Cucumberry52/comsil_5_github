@@ -1,0 +1,14 @@
+if [ $# -eq 0 ]
+then
+	echo Usage: phone searchfor '['… searchfor']'
+	echo '('You didn’t tell me what you want to search for.')'
+else
+    cat mydata.txt > tmp
+    for arg in "$@"
+    do
+    cat tmp > tmp1
+    egrep -i "$arg" tmp1 >tmp
+   
+    done
+    awk -f display.awk tmp
+fi
